@@ -214,8 +214,19 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-# Virtualenv
+#Virtualenv
 python_modules/
+
+#Grunt
+node_modules/
+
+
+#################
+## Pelican
+#################
+
+output/
+publish/
 
 
 #################

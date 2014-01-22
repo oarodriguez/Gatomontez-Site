@@ -1,0 +1,85 @@
+{% extends './base.html' %}
+
+{% block jumbotron %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+{# <div class="jumbotron">
+    <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+</div> #}
+{% endblock jumbotron -%}
+
+{% block bottomcolumns %}{% endblock %}
+
+
+{% block content -%}
+
+{%- if articles -%}
+
+{% block indextitle %}
+<h1>Últimos artículos</h1>
+{% endblock %}
+<div class="row gmzarticlerow">
+
+{%- for article in articles_page.object_list -%}
+
+    {% if loop.first %}
+    <div class="col-lg-8 col-xs-12 col-md-12">
+    {% else %}
+    <div class="col-lg-4 col-xs-12 col-md-6">
+    {% endif %}
+        {% if article.style %}
+        <article class="gmztile clearfix gmzstyle-{{ article.style }}">
+        {% else %}
+        <article class="gmztile clearfix gmzstyle-default">
+        {% endif %}
+            {% if article.thumbnail %}
+            {# Begin thumbnail #}
+            <div class="text-left">
+                <a href="{{ SITEURL }}/{{ article.url }}" alt="{{ article.title }}" title="{{ article.title }}" tabindex="{{ loop.index }}">
+                    <img src="{{ SITEURL }}/static/images/thumbnails/{{ article.thumbnail }}" alt="{{ article.title }}" title="{{ article.title }}">
+                </a>
+            </div>
+            {% else %}
+            <div class="text-left">
+                <a href="{{ SITEURL }}/{{ article.url }}" alt="{{ article.title }}" title="{{ article.title }}" tabindex="{{ loop.index }}">
+                    <img src="{{ SITEURL }}/static/images/thumbnails/empty.png" alt="{{ article.title }}" title="{{ article.title }}">
+                </a>
+            </div>
+            {# End thumbnail #}
+            {% endif %}
+
+            {# Begin content #}
+            <div class="gmztile-content">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12 col-md-12">
+                        <header class="clearfix">
+                            <h3><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="{{ article.title | striptags }}">{{ article.title }}</a></h3>
+                        </header>
+                        <div class="summary">
+                            {{ article.summary }}
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-bar">
+                    <a href="{{ SITEURL }}/{{ article.url }}" class="button btn btn-primary pull-right read-more">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        Seguir leyendo...
+                    </a>
+                    {% if article.locale_date %}
+                    <div class="info">
+                        <em><small>{{ article.locale_date }}</small></em>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {# End content #}
+        </article>
+    </div>
+{%- endfor -%}
+</div>
+
+{%- endif -%}
+{% endblock content -%}

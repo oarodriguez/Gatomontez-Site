@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ DEFAULT_LANG }}"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="{{ DEFAULT_LANG }}"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="{{ DEFAULT_LANG }}"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="{{ DEFAULT_LANG }}"> <!--<![endif]-->
+    <head>
+
+        {% block head -%}
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        {% block description -%}
+        <meta name="description" content="{{ SITEDESCRIPTION }}">
+        {% endblock -%}
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/gmztheme.min.css">
+        {# <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap-theme.min.css"> -#}
+        {# <link rel="shortcut icon" type="image/png" href="{{ SITEURL }}/theme/images/icons/favicon.png"> -#}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ SITEURL }}/favicon.ico">
+
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+        {% include './feeds.html' -%}
+
+        {% block facebookog -%}
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ SITENAME }}">
+        <meta property="og:url" content="{{ SITEURL }}">
+        <meta property="og:description" content="{{  SITEDESCRIPTION }}">
+        <meta property="og:site_name" content="{{ SITENAME }}">
+        <meta property="og:app_id" content="">
+        <meta property="og:locale" content="es_MX">
+        <meta property="og:image" content="{{ SITEURL }}/static/images/thumbnails/empty.png">
+        {% endblock -%}
+
+        {% endblock head %}
+
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        {% block facebookscripts -%}
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=133859926743165";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        {% endblock %}
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ SITEURL }}" alt="Gatomontez.com">Gatomontez.com</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% block activelink %}<li class="active"><a href="{{ SITEURL }}">Inicio</a></li>{% endblock %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ SITEURL }}/tema/curso-de-fortran">Fortran</a></li>
+                                {# <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li> #}
+                            </ul>
+                        </li>
+                    </ul>
+                    {# <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                    </form> #}
+                </div><!--/.navbar-collapse -->
+            </div>
+        </div>
+
+        <div id="gmz-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ SITENAME }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block jumbotron %}{% endblock %}
+
+        <!--[if lt IE 7]>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-warning text-center" style="font-size: 1.3em">
+                        <p class="chromeframe">Estás usando un explorador <strong>obsoleto</strong>. Te recomendamos <a href="http://browsehappy.com/">actualizar tu explorador web</a>, o bien <a href="http://www.google.com/chromeframe/?redirect=true">usa Google Chrome Frame</a> para mejorar tu navegación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <![endif]-->
+
+        <div id="gmzbody-outer" class="gmzbody">
+            <div id="gmzbody-inner" class="gmzbody container">
+                <div class="clearfix">
+
+                    {% block topcolumns %}{% endblock %}
+
+                    {% block content %}
+                    <div class="row">
+                        <div class="col-md-{{ LEFT_COLUMN_WIDTH }}">
+                            {% block contentleft %}{% endblock %}
+                        </div>
+                        <div class="col-md-{{ RIGHT_COLUMN_WIDTH }}">
+                            {% block contentright %}{% endblock %}
+                        </div>
+                    </div>
+                    {% endblock %}
+
+                    {% block bottomcolumns %}{% endblock %}
+
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+
+
+        <div id="gmzfooter-outer" class="gmzfooter">
+            <div if="gmzfooter-inner" class="gmzfooter container">
+                <div class="row">
+                    <div class="col-lg-10 col-xs-10">
+                        <footer>
+                            <p>{{ COPYRIGHT_MESSAGE }}</p>
+                        </footer>
+                    </div>
+                    <div class="col-lg-2 col-xs-2">
+                        <!-- AddThis Follow BEGIN -->
+                        <p>Siguenos en</p>
+                        <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+                        <a class="addthis_button_facebook_follow" addthis:userid="GatomontezWeb"></a>
+                        <a class="addthis_button_rss_follow" addthis:userid="http://feeds.feedburner.com/gatomontezcodigo"></a>
+                        </div>
+                        <!-- AddThis Follow END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/bootstrap.min.js"></script>
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/plugins.js"></script>
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js"></script>
+
+        {% block extrascripts %}{% endblock %}
+
+        {% block addthisscripts %}
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52ddc7565204343d"></script>
+        {% endblock %}
+        {% block disqusscripts %}{% endblock %}
+
+        {% block googleanalytics -%}
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-30067878-1', 'gatomontez.com');
+            ga('send', 'pageview');
+        </script>
+        {% endblock %}
+
+    </body>
+</html>
