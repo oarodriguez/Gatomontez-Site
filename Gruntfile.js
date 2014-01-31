@@ -6,16 +6,14 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        theme: 'gmzblue',
-        contentdir: 'content',
-        outputdir: 'output',
-        publishdir: 'publish',
+        // Don't track
+        sitecfg: grunt.file.readJSON('sitecfg.json'),
 
         /* Tasks */
         watch: {
             less: {
                 files : [
-                    'less/themes/<%= theme %>/**/*.less',
+                    'less/themes/<%= sitecfg.theme %>/**/*.less',
                 ],
                 tasks : ['less:theme', 'shell:create'],
                 options : {
@@ -24,7 +22,7 @@ module.exports = function(grunt) {
             },
             templates: {
                 files : [
-                    'themes/<%= theme %>/templates/*.html',
+                    'themes/<%= sitecfg.theme %>/templates/*.html',
                 ],
                 tasks : ['shell:create'],
                 options : {
@@ -34,7 +32,7 @@ module.exports = function(grunt) {
             content : {
                 files: [
                     'pelicanconf.py',
-                    '<%= contentdir %>/**/*.rst', '<%= contentdir %>/**/*.md'
+                    '<%= sitecfg.contentdir %>/**/*.rst', '<%= sitecfg.contentdir %>/**/*.md'
                 ],
                 tasks : ['shell:create'],
                 options : {
@@ -46,39 +44,53 @@ module.exports = function(grunt) {
         less : {
             theme: {
                 options: {
-                    paths: ['less/themes/<%= theme %>/', 'less/themes/<%= theme %>/bootstrap']
+                    paths: ['less/themes/<%= sitecfg.theme %>/', 'less/themes/<%= sitecfg.theme %>/bootstrap']
                 },
                 files : {
-                    'themes/<%= theme %>/static/css/gmztheme.min.css': 'less/themes/<%= theme %>/gmztheme.less'
+                    'themes/<%= sitecfg.theme %>/static/css/gmztheme.min.css': 'less/themes/<%= sitecfg.theme %>/gmztheme.less'
                 }
+            }
+        },
+
+        copy: {
+
+            // Just copy the files
+            deploy : {
+                files: [{
+                    expand: true,
+                    flatten: false,
+                    cwd: "<%= sitecfg.publishdir %>",
+                    src: ['**/*'],
+                    dest: "<%= sitecfg.deployPath %>"
+                }]
             }
         },
 
         shell : {
 
             clean: {
-                command: 'rm -r <%= outputdir %>',
+                command: 'rm -r <%= sitecfg.outputdir %>',
                 options: {
                     stdout: true
                 }
             },
 
             cleanPublish: {
-                command: 'rm -r <%= publishdir %>',
+                command: 'rm -r <%= sitecfg.publishdir %>',
                 options: {
                     stdout: true
                 }
             },
 
             create : {
-                command: 'pelican <%= contentdir %> -o <%= outputdir %> -s pelicanconf.py',
+                command: 'pelican <%= sitecfg.contentdir %> -o <%= sitecfg.outputdir %> -s pelicanconf.py',
                 options: {
                     stdout: true
                 }
             },
 
             publish : {
-                command: 'pelican <%= contentdir %> -o <%= publishdir %> -s publishconf.py',
+                command: 'pelican <%= sitecfg.contentdir %> -o <%= sitecfg.publishdir %> -s publishconf.py',
                 options: {
                     stdout: true
                 }
@@ -92,8 +104,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-ssh');
 
     grunt.registerTask('create', [
         'less:theme',
@@ -103,6 +115,12 @@ module.exports = function(grunt) {
     grunt.registerTask('publish', [
         'less:theme',
         'shell:publish'
+    ]);
+
+    grunt.registerTask('deploy', [
+        'less:theme',
+        'shell:publish',
+        'copy:deploy'
     ]);
 
     grunt.registerTask('default', ['create']);
