@@ -3,26 +3,39 @@
 
     .linenos {
         width:      35px;
-        padding:    0 auto;
     }
 
     .linenodiv pre {
-        padding: 10px 5px;
+        padding: 10px 10px 10px 5px;
 
         text-align:         right;
         font-size:          @font-size-base;
 
-        background-color:   #fff;
+        color:              #fff;
+        background-color:   #272822;
         border:             none;
 
         border-radius:      0;
+    }
+
+    td {
+        padding:            0;
+        border-collapse:    collapse;
     }
 }
 
 .highlight {
     color: #f8f8f2;
 
-    background: #272822 !important;
+    background: #0D0D0D !important;
+
+    ::selection,
+    ::-moz-selection,
+    ::-o-selection,
+    ::-ms-selection,
+    ::-webkit-selection {
+        background-color:   #A63A62;
+    }
 
     pre {
         font-size: @font-size-base;
