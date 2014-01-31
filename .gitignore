@@ -227,6 +227,10 @@ node_modules/
 
 output/
 publish/
+plugins/
+
+# Theme css directory
+themes/*/static/css
 
 
 #################
