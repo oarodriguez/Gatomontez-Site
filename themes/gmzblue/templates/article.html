@@ -24,7 +24,20 @@
 {% set article_style = article.style if article.style else "default" %}
 
 {% block contentleft %}
-<div class="fb-like-box" data-href="http://www.facebook.com/GatomontezWeb" data-width="350" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+<div class="fb-like-box" data-href="http://www.facebook.com/GatomontezWeb" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+
+
+<div class="adsense-adaptable hidden-sm hidden-xs hidden-print">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Sidebar Big 1 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:600px"
+         data-ad-client="ca-pub-1759190810474940"
+         data-ad-slot="7351214765"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
 {% endblock %}
 
 {% block contentright %}
@@ -51,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-5">
+            <div class="col-lg-5 col-md-5 hidden-print">
                 <div class="gmzstyle-{{ article_style }}">
                     <div class="gmztile-content">
                         {% if article.thumbnail %}
@@ -70,6 +83,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="container-fluid hidden-md hidden-lg hidden-print">
+            <div class="adsense-adaptable hidden-print">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Adaptable 2 -->
+                <ins class="adsbygoogle adaptable-2"
+                     style="display:inline-block"
+                     data-ad-client="ca-pub-1759190810474940"
+                     data-ad-slot="2862139563"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
         <div class="content">
             {{ article.content }}
         </div>
@@ -135,6 +163,20 @@
                     <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional</a>.
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container-fluid hidden-print">
+        <div class="adsense-adaptable hidden-print">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Adaptable 1 -->
+            <ins class="adsbygoogle adaptable-1"
+                 style="display:inline-block"
+                 data-ad-client="ca-pub-1759190810474940"
+                 data-ad-slot="3839345160"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
 
