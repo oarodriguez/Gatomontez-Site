@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 
+{% block title %}
+Artículos relacionados con el tema {{ tag }} | {{ SITENAME }}
+{% endblock %}
+
 {% block indextitle %}
 <h1>Artículo relacionados con el tema <strong><em>{{ tag }}</em></strong></h1>
 {% endblock %}

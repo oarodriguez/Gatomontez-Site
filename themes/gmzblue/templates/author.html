@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 
+{% block title %}
+Artículos escritos por {{ author }} | {{ SITENAME }}
+{% endblock %}
+
 {% block indextitle %}
 <h1>Artículos escritos por {{ author }}</h1>
 {% endblock %}

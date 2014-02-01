@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 
+{% block title %}
+Artículos en la categoría {{ category }} | {{ SITENAME }}
+{% endblock %}
+
 {% block indextitle %}
 <h1>Artículos en la categoría <strong><em>{{ category }}</em></strong></h1>
 {% endblock %}
