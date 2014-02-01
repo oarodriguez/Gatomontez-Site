@@ -13,9 +13,9 @@
 <meta property="og:app_id" content="">
 <meta property="og:locale" content="es_MX">
 {% if article.thumbnail -%}
-<meta property="og:image" content="{{ SITEURL }}/static/images/thumbnails/{{ article.thumbnail }}">
+<meta property="og:image" content="{{ SITEURL }}/images/thumbnails/{{ article.thumbnail }}">
 {% else -%}
-<meta property="og:image" content="{{ SITEURL }}/static/images/thumbnails/empty.png">
+<meta property="og:image" content="{{ SITEURL }}/images/thumbnails/empty.png">
 {% endif -%}
 
 {% endblock %}
@@ -68,9 +68,9 @@
                 <div class="gmzstyle-{{ article_style }}">
                     <div class="gmztile-content">
                         {% if article.thumbnail %}
-                        <img src="{{ SITEURL }}/static/images/thumbnails/{{ article.thumbnail }}" alt="{{ article.title }}" title="{{ article.title }}" class="img-responsive">
+                        <img src="{{ SITEURL }}/images/thumbnails/{{ article.thumbnail }}" alt="{{ article.title }}" title="{{ article.title }}" class="img-responsive">
                         {% else %}
-                        <img src="{{ SITEURL }}/static/images/thumbnails/empty.png" alt="{{ article.title }}" title="{{ article.title }}" class="img-responsive">
+                        <img src="{{ SITEURL }}/images/thumbnails/empty.png" alt="{{ article.title }}" title="{{ article.title }}" class="img-responsive">
                         {% endif %}
                         <div class="bottom-bar">
                             {% if article.category %}

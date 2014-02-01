@@ -39,13 +39,13 @@
             {# Begin thumbnail #}
             <div class="text-left">
                 <a href="{{ SITEURL }}/{{ article.url }}" alt="{{ article.title }}" title="{{ article.title }}" tabindex="{{ loop.index }}">
-                    <img src="{{ SITEURL }}/static/images/thumbnails/{{ article.thumbnail }}" alt="{{ article.title }}" title="{{ article.title }}">
+                    <img src="{{ SITEURL }}/images/thumbnails/{{ article.thumbnail }}" alt="{{ article.title }}" title="{{ article.title }}">
                 </a>
             </div>
             {% else %}
             <div class="text-left">
                 <a href="{{ SITEURL }}/{{ article.url }}" alt="{{ article.title }}" title="{{ article.title }}" tabindex="{{ loop.index }}">
-                    <img src="{{ SITEURL }}/static/images/thumbnails/empty.png" alt="{{ article.title }}" title="{{ article.title }}">
+                    <img src="{{ SITEURL }}/images/thumbnails/empty.png" alt="{{ article.title }}" title="{{ article.title }}">
                 </a>
             </div>
             {# End thumbnail #}
