@@ -5,7 +5,7 @@ Author: O. A. Rodríguez
 Email: oarodriguez@live.com.mx
 Category: Fortran
 Tags: Programación, Curso de Fortran
-Thumbnail: fortran-logo.png
+Thumbnail: fortran-logo
 Style: blue
 Summary: Ésta es la primera parte del curso de Fortran, en el cual aprenderás a programar en este lenguaje desde cero.
 

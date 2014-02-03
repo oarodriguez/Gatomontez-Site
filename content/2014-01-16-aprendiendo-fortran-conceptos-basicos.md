@@ -4,7 +4,7 @@ Slug: aprendiendo-fortran-conceptos-basicos
 Author: O. A. Rodríguez
 Category: Fortran
 Tags: Programación, Curso de Fortran
-Thumbnail: fortran-logo.png
+Thumbnail: fortran-logo
 Style: blue
 Summary: Segunda entrega del Curso de Fortran. Esta entrega es una continuación de la anterior, la cual presenta los elementos básicos del lenguaje.
 
