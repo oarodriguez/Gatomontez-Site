@@ -78,14 +78,11 @@ THEME_STATIC_DIR = u'theme'
 STATIC_PATHS = [
     'images',
     'pictures',
+    '.htaccess',
+    'humans.txt',
+    'robots.txt',
     'favicon.ico'
 ]
-FILES_TO_COPY = (
-    ('images/icons/favicon.ico', 'favicon.ico'),
-    ('extra/.htaccess', '.htaccess'),
-    ('extra/humans.txt', 'humans.txt'),
-    ('extra/robots.txt', 'robots.txt')
-)
 
 # Summary
 SUMMARY_MAX_LENGTH = 30
