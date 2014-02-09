@@ -47,12 +47,57 @@ module.exports = function(grunt) {
                     paths: ['less/themes/<%= sitecfg.theme %>/', 'less/themes/<%= sitecfg.theme %>/bootstrap']
                 },
                 files : {
-                    'themes/<%= sitecfg.theme %>/static/css/gmztheme.min.css': 'less/themes/<%= sitecfg.theme %>/gmztheme.less'
+                    'build/themes/<%= sitecfg.theme %>/static/css/gmztheme.css': 'less/themes/<%= sitecfg.theme %>/gmztheme.less'
+                }
+            }
+        },
+
+        cssmin: {
+            theme : {
+                files : {
+                    'themes/<%= sitecfg.theme %>/static/css/gmztheme.min.css': [
+                        'build/themes/<%= sitecfg.theme %>/static/css/gmztheme.css'
+                    ]
+                },
+                options: {
+                    report: 'min'
+                }
+            }
+        },
+
+        uglify: {
+            theme : {
+                files : {
+                    'themes/<%= sitecfg.theme %>/static/js/main.min.js': [
+                        'js/themes/<%= sitecfg.theme %>/**/*.js'
+                    ]
+                },
+                options : {
+                    report: 'min'
                 }
             }
         },
 
         copy: {
+
+            /* Copy files not minified to development directory, as these are
+            not copied to the current theme static directory, hence pelican
+            does not copy them. */
+            devel : {
+                files : [{
+                    expand: true,
+                    flatten: false,
+                    cwd: "build/themes/<%= sitecfg.theme %>/static",
+                    src: ['**/*'],
+                    dest: "<%= sitecfg.outputdir %>/theme"
+                }, {
+                    expand: true,
+                    flatten: false,
+                    cwd: "js/themes/<%= sitecfg.theme %>",
+                    src: ['**/*'],
+                    dest: "<%= sitecfg.outputdir %>/theme/js"
+                }]
+            },
 
             // Just copy the files
             deploy : {
@@ -95,31 +140,32 @@ module.exports = function(grunt) {
                     stdout: true
                 }
             }
-        },
-
-        sftp: {
-
         }
+
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask('create', [
         'less:theme',
+        'copy:devel',
         'shell:create'
     ]);
 
     grunt.registerTask('publish', [
         'less:theme',
+        'cssmin:theme',
+        'uglify:theme',
         'shell:publish'
     ]);
 
     grunt.registerTask('deploy', [
-        'less:theme',
-        'shell:publish',
+        'publish',
         'copy:deploy'
     ]);
 

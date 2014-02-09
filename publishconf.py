@@ -10,6 +10,8 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
+PUBLISH = True
+
 SITEURL = 'http://gatomontez.com/'
 RELATIVE_URLS = False
 
