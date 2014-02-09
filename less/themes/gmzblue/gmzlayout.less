@@ -4,9 +4,20 @@
  * Copyright 2014 O. A. Rodríguez
  */
 
+
+@media print {
+    a[href]:after {
+        font-size: 80%;
+        font-family: @font-family-monospace;
+        font-variant: normal;
+
+        content: " [" attr(href) "]";
+    }
+}
+
 // Inline code
 code {
-    font-size: @font-size-base;
+    font-size: 100%;
 }
 
 #gmz-header {
@@ -168,6 +179,10 @@ code {
     .comments {
         padding: 20px 0;
     }
+}
+
+.follow-buttons {
+    display: inline-block;;
 }
 
 

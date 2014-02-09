@@ -24,19 +24,22 @@
 {% set article_style = article.style if article.style else "default" %}
 
 {% block contentleft %}
-<div class="fb-like-box" data-href="http://www.facebook.com/GatomontezWeb" data-width="300" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 hidden-sm hidden-xs hidden-print clearfix">
+        <div class="fb-like-box" data-href="http://www.facebook.com/GatomontezWeb" data-width="300" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+    </div>
 
-
-<div class="adsense-adaptable hidden-sm hidden-xs hidden-print">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Sidebar Big 1 -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:600px"
-         data-ad-client="ca-pub-1759190810474940"
-         data-ad-slot="7351214765"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <div class="col-lg-12 col-md-12 adsense-adaptable hidden-sm hidden-xs hidden-print clearfix">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Sidebar Big 1 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:600px"
+             data-ad-client="ca-pub-1759190810474940"
+             data-ad-slot="7351214765"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 </div>
 {% endblock %}
 
@@ -52,7 +55,7 @@
                             <em>Por <span><a href="{{ SITEURL }}/{{ article.author.url }}" title="Artículos por {{ article.author }}" alt="Artículos por {{ article.author }}">{{ article.author }}</a></span>, <span class="date">{{ article.locale_date }}</span></em>
                         </p>
                     </header>
-                    <div class="social-buttons">
+                    <div class="social-buttons hidden-print">
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style ">
                             <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
@@ -106,7 +109,7 @@
     <hr>
 
     {% if article.tags %}
-    <div class="tags">
+    <div class="tags hidden-print">
         <strong><span>Temas</span></strong>:
         <ul class="nav nav-pills">
             {% for tag in article.tags %}
@@ -118,7 +121,7 @@
     </div>
     {% endif %}
 
-    <div class="extra-info">
+    <div class="extra-info hidden-print">
         <div class="row">
             <div class="col-lg-8">
                 <div class="text-center">
@@ -181,7 +184,7 @@
     </div>
 
     {# Comments #}
-    <div class="comments">
+    <div class="comments hidden-print">
         <div id="disqus_thread"></div>
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>

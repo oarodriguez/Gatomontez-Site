@@ -10,7 +10,7 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <title>{% block title %}{{ SITENAME }} | {{ SITEDESCRIPTION }}{% endblock title %}</title>
         {% block description -%}
         <meta name="description" content="{{ SITEDESCRIPTION }}">
         {% endblock -%}
@@ -39,7 +39,7 @@
 
         {% block facebookog -%}
         <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ SITENAME }}">
+        <meta property="og:title" content="{{ SITENAME }} | {{ SITEDESCRIPTION }}">
         <meta property="og:url" content="{{ SITEURL }}">
         <meta property="og:description" content="{{  SITEDESCRIPTION }}">
         <meta property="og:site_name" content="{{ SITENAME }}">
@@ -114,7 +114,7 @@
 
         {% block jumbotron %}{% endblock %}
 
-        <!--[if lt IE 7]>
+        <!--[if lt IE 8]>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -156,15 +156,17 @@
                 <div class="row">
                     <div class="col-lg-10 col-xs-10">
                         <footer>
-                            <p>{{ COPYRIGHT_MESSAGE }}</p>
+                            <p>&copy; 2014, <a href="{{ SITEURL }}">{{ SITENAME }}</a>, by {{ AUTHOR }}</p>
                         </footer>
                     </div>
-                    <div class="col-lg-2 col-xs-2">
+                    <div class="col-lg-2 col-xs-2 text-right hidden-print">
                         <!-- AddThis Follow BEGIN -->
-                        <p>Siguenos en</p>
-                        <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
-                        <a class="addthis_button_facebook_follow" addthis:userid="GatomontezWeb"></a>
-                        <a class="addthis_button_rss_follow" addthis:userid="http://feeds.feedburner.com/gatomontezcodigo"></a>
+                        <p>Síguenos en</p>
+                        <div class="follow-buttons">
+                            <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+                            <a class="addthis_button_facebook_follow" addthis:userid="GatomontezWeb"></a>
+                            <a class="addthis_button_rss_follow" addthis:userid="http://feeds.feedburner.com/gatomontezcodigo"></a>
+                            </div>
                         </div>
                         <!-- AddThis Follow END -->
                     </div>

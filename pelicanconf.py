@@ -106,4 +106,5 @@ LEFT_COLUMN_WIDTH = 4
 RIGHT_COLUMN_WIDTH = 8
 
 # Copyright message
-COPYRIGHT_MESSAGE = u'&copy; 2014, {author}'.format(author=AUTHOR)
+# COPYRIGHT_MESSAGE = u'&copy; 2014, {sitename}, by {author}'.format(
+#     sitename=SITENAME, author=AUTHOR)
