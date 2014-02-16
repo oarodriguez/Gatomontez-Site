@@ -9,10 +9,20 @@ SITENAME = u'Gatomontez'
 SITEURL = 'http://gatomontez.com'
 SITEDESCRIPTION = u'Manuales, tutoriales y recursos sobre programación.'
 
+# Date
+TIMEZONE = 'America/Mexico_City'
+DATE_FORMATS = {
+    'en': u'%A %d %B %Y',
+    'es': u'%A, %d de %B, %Y'
+}
 # Languaje
 DEFAULT_LANG = u'es'
 DEFAULT_CATEGORY = u'sin-categoria'
-# LOCALE = ('us', 'en_US')
+
+# For Windows:
+# See http://msdn.microsoft.com/en-us/library/39cwe7zf%28vs.71%29.aspx
+# See http://msdn.microsoft.com/en-us/library/cdax410z%28VS.71%29.aspx
+LOCALE = ('esm', 'es_MX', 'es', 'en_US' 'us')
 
 # Articles
 ARTICLE_URL = u'articulo/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -43,12 +53,6 @@ AUTHORS_SAVE_AS = u'autores/index.html'
 CATEGORIES_SAVE_AS = u'categorias/index.html'
 TAGS_SAVE_AS = u'temas/index.html'
 
-# Date
-TIMEZONE = 'America/Mexico_City'
-DATE_FORMATS = {
-    'en': '%A %d %B %Y',
-    'es': '%A, %d %B, %Y'
-}
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
