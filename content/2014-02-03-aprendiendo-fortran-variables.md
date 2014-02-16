@@ -509,6 +509,7 @@ caso la información es literalmente basura. El corolario es que este problema s
 empeora entre más variables se usen. Sin embargo deshabilitando el tipo implícito
 hay una diferencia total:
 
+    #!fortran
     implicit none
     real :: f2x
 
