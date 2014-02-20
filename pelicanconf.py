@@ -53,6 +53,7 @@ AUTHORS_SAVE_AS = u'autores/index.html'
 CATEGORIES_SAVE_AS = u'categorias/index.html'
 TAGS_SAVE_AS = u'temas/index.html'
 
+MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'smarty']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -92,7 +93,7 @@ STATIC_PATHS = [
 SUMMARY_MAX_LENGTH = 30
 
 # Plugins
-PLUGIN_PATH = './plugins'
+PLUGIN_PATH = '../pelican-plugins'
 PLUGINS = ['gravatar']
 
 # Gravatar
