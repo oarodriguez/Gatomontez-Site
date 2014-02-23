@@ -104,7 +104,7 @@ code {
 
         padding: 5px 10px;
 
-        background-color: fade(gray, 50%);
+        background-color: fade(black, 50%);
     }
 
     .read-more {
@@ -132,7 +132,7 @@ code {
     .gmztile-content {
         height: ceil(@gmztile-height * 0.8);
 
-        background-color: fade(black, 10%);
+        background-color: transparent;
     }
 
     header h1 {
@@ -192,7 +192,16 @@ code {
         color: #fff;
     }
 
-    #gradient > .vertical(fade(@gmzstyle-blue-bg, 90%), fade(@gmzstyle-blue-bg, 80%), 0, 100%);
+    #gradient > .vertical(fade(@gmzstyle-blue-bg, 100%), fade(@gmzstyle-blue-bg, 80%), 0, 100%);
+}
+
+.gmzstyle-python {
+    color: #fff;
+    a {
+        color: #fff;
+    }
+
+    #gradient > .vertical(fade(#fff, 90%), fade(#fff, 80%), 0, 100%);
 }
 
 .gmzstyle-default {
