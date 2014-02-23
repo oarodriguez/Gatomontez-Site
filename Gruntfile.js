@@ -15,7 +15,7 @@ module.exports = function(grunt) {
                 files : [
                     'less/themes/<%= sitecfg.theme %>/**/*.less',
                 ],
-                tasks : ['less:theme', 'shell:create'],
+                tasks : ['less:theme', 'copy:devel', 'shell:create'],
                 options : {
                     interrupt: true
                 }
