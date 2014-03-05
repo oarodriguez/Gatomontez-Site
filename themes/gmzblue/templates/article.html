@@ -20,7 +20,7 @@
 
 {% endblock %}
 
-{# A variable #}
+{# The style of the article #}
 {% set article_style = article.style if article.style else "default" %}
 
 {% block contentleft %}
@@ -44,7 +44,7 @@
 {% endblock %}
 
 {% block contentright %}
-<div class="gmzarticle">
+<div class="article">
     <article>
         <div class="row">
             <div class="col-lg-7 col-md-7">
@@ -68,20 +68,20 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-5 hidden-print">
-                <div class="gmzstyle-{{ article_style }}">
-                    <div class="gmztile-content">
+                <div class="tile tile-style-{{ article_style }}">
+                    <div class="tile-thumbnail">
                         {% if article.thumbnail %}
                         <img src="{{ SITEURL }}/images/thumbnails/{{ article.thumbnail }}.png" alt="{{ article.title }}" title="{{ article.title }}" class="img-responsive">
                         {% else %}
                         <img src="{{ SITEURL }}/images/thumbnails/empty.png" alt="{{ article.title }}" title="{{ article.title }}" class="img-responsive">
                         {% endif %}
-                        <div class="bottom-bar">
-                            {% if article.category %}
-                            <p>
-                                <em>En: <a href="{{ SITEURL}}/{{ article.category.url }}">{{ article.category }}</a></em>
-                            </p>
-                            {% endif %}
-                        </div>
+                    </div>
+                    <div class="tile-footer">
+                        {% if article.category %}
+                        <p>
+                            <em>En: <a href="{{ SITEURL}}/{{ article.category.url }}">{{ article.category }}</a></em>
+                        </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

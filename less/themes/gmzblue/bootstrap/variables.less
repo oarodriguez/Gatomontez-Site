@@ -632,18 +632,19 @@
 // -------------------------------------------------
 
 // Main header height
-@gmzheader-height:          100px;
+@header-height:          100px;
+@header-color:           #fff;
+@header-bg:              darken(@navbar-inverse-bg, 15%);
+@header-font-size:       ceil(@font-size-base *  5.0); // ~18px
 
-@gmzheader-color:           #fff;
+// Tile height
+@tile-height:                     ceil(@font-size-base * 14);
+@tile-heading-font-size:          @font-size-h4;
+@tile-heading-height:             2*@headings-line-height*@font-size-h4;
+@tile-heading-margin-vertical:    @line-height-computed;
 
-@gmzheader-bg:              darken(@navbar-inverse-bg, 15%);
-
-@gmzheader-font-size:       ceil(@font-size-base *  5.0); // ~18px
-
-@gmztile-height:            ceil(@font-size-base * 16);
-
-
-@gmzstyle-default-bg:           #999;
-@gmzstyle-default-hover-bg:     #666;
-@gmzstyle-blue-bg:              darken(#99ccff, 50%);
-@gmzstyle-blue-hover-bg:        darken(#99ccff, 70%);
+// Tile styles
+@style-default-bg:             #999;
+@style-default-hover-bg:       #666;
+@style-blue-bg:                darken(#99ccff, 50%);
+@style-blue-hover-bg:          darken(#99ccff, 70%);

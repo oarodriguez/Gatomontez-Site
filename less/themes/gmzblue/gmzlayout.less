@@ -20,122 +20,130 @@ code {
     font-size: 100%;
 }
 
-#gmz-header {
-    height:             @gmzheader-height;
+#layout-header {
+    height: @header-height;
 
-    color:              @gmzheader-color;
-    font-size:          @gmzheader-font-size;
-    font-family:        @font-family-monospace;
-    line-height:        @gmzheader-height;
+    color: @header-color;
+    font-size: @header-font-size;
+    font-family: @font-family-monospace;
+    line-height: @header-height;
 
-    background-color:   @gmzheader-bg;
-    border-bottom:      1px solid darken(@gmzheader-bg, 10%);
+    background-color: @header-bg;
+    border-bottom: 1px solid darken(@header-bg, 10%);
 }
 
-#gmzbody-inner {
-    margin:             10px auto;
-    padding:            10px 20px;
+#layout-body-inner {
+    margin: 10px auto;
+    padding: 10px 20px;
 
-    background-color:   fade(#fff, 85%);
+    background-color: fade(#fff, 85%);
 }
 
-#gmzfooter-outer {
-    padding:            10px 0;
+#layout-footer-outer {
+    padding: 10px 0;
 
-    min-height:         150px;
+    min-height: 150px;
 
-    color:              #fff;
+    color: #fff;
 
     #gradient > .vertical(lighten(#222, 5%), #222, 0, 100%);
-
-    footer {
-
-    }
 }
 
-.gmztile {
-    position:           relative;
+.tile {
+    position: relative;
 
-    height:             @gmztile-height;
-    margin:             5px 0 20px 5px;
-    overflow:           hidden;
+    height: @tile-height;
+    margin: 5px 0 20px 5px;
+    overflow: hidden;
 
     #gradient > .vertical(fade(white, 90%), fade(white, 80%), 0, 100%);
-
-    &:hover {
-        .gmztile-content {
-            top: 0;
-        }
-
-        &.gmzstyle-blue {
-            #gradient > .vertical(fade(@gmzstyle-blue-hover-bg, 90%), fade(@gmzstyle-blue-hover-bg, 80%), 0, 100%);
-        }
-    }
 }
 
-.gmztile-content {
+.tile-thumbnail > a {
     position: absolute;
-    height: @gmztile-height;
-    top: @gmztile-height - 45px;
+    bottom: 0;
     left: 0;
     right: 0;
+    top: 0;
+}
+
+.tile-body {
+    position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
+    top: @tile-height - @tile-heading-height - @tile-heading-margin-vertical;
 
     display: block;
+    height: @tile-height;
     padding: 0 5px;
 
-    background-color: fade(black, 70%);
+    background-color: fade(black, 80%);
 
     .transition(~"top 0.25s ease-out");
+}
 
-    header h3 {
-        margin: 15px auto;
-    }
+.tile:hover .tile-body {
+    top: 0;
+}
 
-    .summary {
-        position: relative;
-    }
+/* The heading block has two lines of height*/
+.tile-heading header > h2 {
+    height: @tile-heading-height;
+    margin: (@tile-heading-margin-vertical / 2) auto;
 
-    .bottom-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+    font-size: @tile-heading-font-size;
+}
 
-        padding: 5px 10px;
+/* Bold font will emphasize headings when reading the summary */
+.tile:hover .tile-heading header > h2 {
+    font-weight: bold;
+}
 
-        background-color: fade(black, 50%);
-    }
+.tile-summary {
+    position: relative;
+
+    padding: 0 15px;
+
+    font-size: ceil(0.9*@font-size-base);
+
+    .hyphens(break-word);
+}
+
+.tile-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 5px 10px;
+
+    background-color: fade(black, 50%);
 
     .read-more {
         position: relative;
     }
 
-    .info {
+    .date {
         position: absolute;
         bottom: 0;
         left: 0;
 
         padding: 0 0 13px 10px;
 
+        font-size: 0.8em;
         text-transform: capitalize;
-    }
-
-    .gmzarticle & {
-        position: relative;
-        top: 0;
     }
 }
 
-.gmzarticle {
+.tile-style-blue {
+    #gradient > .vertical(fade(@style-blue-hover-bg, 90%), fade(@style-blue-hover-bg, 80%), 0, 100%);
+}
 
-    .gmztile-content {
-        height: ceil(@gmztile-height * 0.8);
+// Styles for article.html template
+.article {
 
-        background-color: transparent;
-    }
-
-    header h1 {
+    header > h1 {
         margin-top: 5px;
     }
 
@@ -185,17 +193,16 @@ code {
     display: inline-block;;
 }
 
-
-.gmzstyle-blue {
+.tile-style-blue {
     color: #fff;
     a {
         color: #fff;
     }
 
-    #gradient > .vertical(fade(@gmzstyle-blue-bg, 100%), fade(@gmzstyle-blue-bg, 80%), 0, 100%);
+    #gradient > .vertical(fade(@style-blue-bg, 100%), fade(@style-blue-bg, 80%), 0, 100%);
 }
 
-.gmzstyle-python {
+.tile-style-python {
     color: #fff;
     a {
         color: #fff;
@@ -204,15 +211,15 @@ code {
     #gradient > .vertical(fade(#fff, 90%), fade(#fff, 80%), 0, 100%);
 }
 
-.gmzstyle-default {
+.tile-style-default {
     color: #fff;
     a {
         color: #fff;
     }
 
-    #gradient > .vertical(fade(@gmzstyle-default-bg, 90%), fade(@gmzstyle-default-bg, 80%), 0, 100%);
+    #gradient > .vertical(fade(@style-default-bg, 90%), fade(@style-default-bg, 80%), 0, 100%);
     &:hover {
-        #gradient > .vertical(fade(@gmzstyle-default-hover-bg, 90%), fade(@gmzstyle-default-hover-bg, 80%), 0, 100%);
+        #gradient > .vertical(fade(@style-default-hover-bg, 90%), fade(@style-default-hover-bg, 80%), 0, 100%);
     }
 }
 
